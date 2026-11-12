@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>W3P PTE. LTD. · Software company · Singapore</title>
+  <meta name="description" content="W3P PTE. LTD. is a Singapore software company that builds and runs mobile and web apps, including Keiko.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: oklch(0.47 0.25 268);
+      --blue-hi: oklch(0.56 0.22 268);
+      --paper: oklch(0.975 0.008 85);
+      --paper-2: oklch(0.945 0.012 85);
+      --ink: oklch(0.19 0.02 268);
+      --quiet: oklch(0.5 0.02 268);
+      --rule: oklch(0.88 0.012 85);
+      --on-blue: oklch(0.985 0.008 268);
+      --on-blue-quiet: oklch(0.85 0.06 268);
+      --k-bg: #10120F; --k-text: #F1F3E9; --k-muted: #A6AE9C; --k-lime: #D9FF7A;
+      --display: "Archivo", "Arial Black", sans-serif;
+      --body: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --gut: clamp(20px, 5vw, 72px);
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--body); }
+    a { color: inherit; }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 0 var(--gut); }
+    .wm { font: 900 22px/1 var(--display); font-stretch: 125%; letter-spacing: -0.01em; text-decoration: none; color: inherit; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative; overflow: hidden; color: var(--on-blue);
+      background:
+        radial-gradient(120% 90% at 85% 0%, var(--blue-hi) 0%, transparent 55%),
+        var(--blue);
+    }
+    .hero::before { /* fine grain so the blue feels printed, not flat */
+      content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .22; mix-blend-mode: soft-light;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+    .hero .wrap { position: relative; }
+    .bar { display: flex; justify-content: space-between; align-items: center; height: 84px; }
+    .bar nav { display: flex; align-items: center; gap: clamp(16px, 3vw, 34px); font-size: 15px; }
+    .bar nav a { color: var(--on-blue-quiet); text-decoration: none; transition: color .2s; }
+    .bar nav a:hover { color: var(--on-blue); }
+    .clock { display: inline-flex; align-items: center; gap: 8px; color: var(--on-blue-quiet); font-variant-numeric: tabular-nums; }
+    .clock i { width: 7px; height: 7px; border-radius: 50%; background: #7CFFB2; box-shadow: 0 0 0 4px rgb(124 255 178 / .18); }
+
+    .hero-copy { padding: clamp(64px, 11vw, 150px) 0 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 32px; align-items: end; }
+    .hero-copy h1 { margin: 0; font: 600 clamp(38px, 5.6vw, 76px)/1.02 var(--body); letter-spacing: -0.035em; max-width: 15ch; }
+    .hero-copy h1 em { font-style: normal; color: var(--on-blue-quiet); }
+    .hero-copy .facts { font-size: 15px; color: var(--on-blue-quiet); text-align: right; line-height: 1.7; }
+    .hero-copy .facts b { color: var(--on-blue); font-weight: 600; }
+
+    .giant {
+      display: block; margin: clamp(40px, 6vw, 80px) 0 0;
+      font: 900 clamp(130px, 33vw, 470px)/0.74 var(--display); font-stretch: 125%;
+      letter-spacing: -0.055em; margin-left: -0.05em;
+      transform: translateY(0.16em); /* let the wordmark sink below the fold edge */
+      user-select: none;
+    }
+
+    /* ---------- Sections ---------- */
+    section { padding: clamp(72px, 10vw, 136px) 0; }
+    .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: clamp(28px, 4vw, 44px); }
+    .eyebrow .n { font: 900 14px/1 var(--display); font-stretch: 125%; color: var(--blue); }
+    .eyebrow .line { flex: 1; height: 1px; background: var(--rule); }
+    .eyebrow .t { font-size: 15px; color: var(--quiet); }
+    h2 { margin: 0 0 clamp(36px, 5vw, 64px); font: 700 clamp(34px, 4.6vw, 60px)/1.02 var(--body); letter-spacing: -0.035em; max-width: 16ch; }
+
+    /* ---------- Keiko feature ---------- */
+    .feature { display: grid; grid-template-columns: 1fr 1.05fr; border-radius: 28px; overflow: hidden; background: var(--k-bg); color: var(--k-text); min-height: 560px; }
+    .feature .info { padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; }
+    .feature .name { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.16em; font-size: 15px; }
+    .feature .name svg { width: 38px; height: 38px; }
+    .feature h3 { margin: clamp(40px, 7vw, 96px) 0 18px; font: 700 clamp(30px, 3.6vw, 48px)/1.04 var(--body); letter-spacing: -0.03em; max-width: 13ch; }
+    .feature .sub { margin: 0; color: var(--k-muted); font-size: 19px; }
+    .feature .meta { margin-top: auto; padding-top: 40px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chips span { border: 1px solid #30362C; border-radius: 999px; padding: 6px 14px; font-size: 14px; color: var(--k-muted); }
+    .cta { display: inline-flex; align-items: center; gap: 10px; background: var(--k-lime); color: var(--k-bg); font-weight: 700; text-decoration: none; padding: 13px 22px; border-radius: 999px; transition: transform .35s var(--ease); }
+    .cta:hover { transform: translateX(4px); }
+
+    .stage { position: relative; background: var(--k-lime); overflow: hidden; }
+    .stage .ring { position: absolute; width: 130%; aspect-ratio: 1; left: -15%; top: 18%; border-radius: 50%; border: 2px solid rgb(16 18 15 / .14); }
+    .stage .ring.r2 { width: 95%; left: 2.5%; top: 34%; }
+    .phone {
+      position: absolute; left: 50%; top: 13%; width: min(300px, 62%); aspect-ratio: 9 / 19.2;
+      transform: translateX(-50%) rotate(-7deg);
+      border-radius: 46px; padding: 11px; background: #0b0c0a;
+      box-shadow: 0 0 0 1.5px #2a2e26 inset, 0 40px 70px -20px rgb(16 18 15 / .55), 0 12px 24px -10px rgb(16 18 15 / .4);
+    }
+    .phone::after { content: ""; position: absolute; top: 22px; left: 50%; width: 30%; height: 24px; transform: translateX(-50%); background: #0b0c0a; border-radius: 20px; }
+    .phone img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 36px; }
+
+    /* ---------- Contact ---------- */
+    .contact { background: var(--paper-2); }
+    .contact-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(32px, 6vw, 96px); }
+    .mail { display: inline-block; font: 700 clamp(28px, 4vw, 52px)/1.05 var(--body); letter-spacing: -0.035em; color: var(--blue); text-decoration: none; background: linear-gradient(currentColor 0 0) 0 100% / 100% 3px no-repeat; padding-bottom: 8px; transition: background-size .5s var(--ease); }
+    .mail:hover { background-size: 0 3px; background-position: 100% 100%; }
+    .contact p { color: var(--quiet); max-width: 40ch; margin: 22px 0 0; }
+    dl { margin: 0; }
+    .rows div { display: grid; grid-template-columns: 150px 1fr; gap: 16px; padding: 15px 0; border-top: 1px solid var(--rule); }
+    .rows div:last-child { border-bottom: 1px solid var(--rule); }
+    .rows dt { color: var(--quiet); font-size: 15px; }
+    .rows dd { margin: 0; font-weight: 500; }
+    .rows a { text-decoration: none; }
+
+    footer { background: var(--ink); color: oklch(0.8 0.015 268); font-size: 15px; }
+    footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; padding-top: 34px; padding-bottom: 34px; }
+    footer .wm { color: var(--paper); }
+    footer a { color: inherit; }
+
+    @media (max-width: 920px) {
+      .hero-copy { grid-template-columns: 1fr; }
+      .hero-copy .facts { text-align: left; }
+      .feature, .contact-grid { grid-template-columns: 1fr; }
+      .stage { min-height: 460px; order: -1; }
+    }
+    @media (max-width: 560px) {
+      .bar nav a { display: none; }
+      .rows div { grid-template-columns: 1fr; gap: 2px; }
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .reveal { animation: rise 1.1s var(--ease) both; }
+      .reveal.d1 { animation-delay: .08s; } .reveal.d2 { animation-delay: .18s; }
+      .giant.reveal { animation-name: sink; }
+      @keyframes rise { from { opacity: 0; transform: translateY(26px); } }
+      @keyframes sink { from { opacity: 0; transform: translateY(0.45em); } to { transform: translateY(0.16em); } }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="bar">
+        <a class="wm" href="#">W3P</a>
+        <nav>
+          <a href="#products">Products</a>
+          <a href="#contact">Contact</a>
+          <span class="clock"><i></i><span id="sgt">Singapore</span></span>
+        </nav>
+      </div>
+      <div class="hero-copy">
+        <h1 class="reveal">We build and run apps <em>for iPhone and the web.</em></h1>
+        <div class="facts reveal d1"><b>W3P PTE. LTD.</b><br>Software company<br>Singapore</div>
+      </div>
+      <span class="giant reveal d2" aria-hidden="true">W3P</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="products">
+      <div class="wrap">
+        <div class="eyebrow"><span class="n">01</span><span class="line"></span><span class="t">Products</span></div>
+        <h2>Apps we build and operate ourselves.</h2>
+        <article class="feature">
+          <div class="info">
+            <div class="name">
+              <svg viewBox="0 0 64 64" aria-hidden="true"><g fill="#D9FF7A"><path d="M51.774 8.431A30.769 30.769 0 0 0 8.431 12.226A30.769 30.769 0 0 0 12.226 55.569L20.79 45.354A24.205 24.205 0 0 1 51.774 8.431Z M12.226 55.569A30.769 30.769 0 0 0 55.569 51.774A30.769 30.769 0 0 0 51.774 8.431L43.21 18.646A24.205 24.205 0 0 1 12.226 55.569Z"/><ellipse cx="28.4" cy="30.8" rx="4.2" ry="5.4"/><ellipse cx="41" cy="30.8" rx="4.2" ry="5.4"/></g></svg>
+              KEIKO
+            </div>
+            <h3>AI Coach built around your training.</h3>
+            <p class="sub">Life changes, plans adapt.</p>
+            <div class="meta">
+              <div class="chips"><span>iPhone</span><span>Web</span><span>Telegram</span></div>
+              <a class="cta" href="https://keiko.coach">keiko.coach <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="stage" aria-hidden="true">
+            <span class="ring"></span><span class="ring r2"></span>
+            <div class="phone"><img src="assets/keiko-screen.jpg" alt=""></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="eyebrow"><span class="n">02</span><span class="line"></span><span class="t">Support and company</span></div>
+        <div class="contact-grid">
+          <div>
+            <h2>One place for help with every W3P app.</h2>
+            <a class="mail" href="mailto:support@w3p.studio">support@w3p.studio</a>
+            <p>Questions about any W3P product, your account, billing or privacy all come here.</p>
+          </div>
+          <dl class="rows">
+            <div><dt>Legal name</dt><dd>W3P PTE. LTD.</dd></div>
+            <div><dt>UEN</dt><dd>202143531R</dd></div>
+            <div><dt>Registered address</dt><dd>7 Temasek Boulevard, #12-07<br>Suntec Tower One<br>Singapore 038987</dd></div>
+            <div><dt>Phone</dt><dd><a href="tel:+6589212160">+65 8921 2160</a></dd></div>
+            <div><dt>Support hours</dt><dd>Mon to Fri, 9:00 to 18:00 SGT</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span class="wm">W3P</span>
+      <span>© 2026 W3P PTE. LTD. · Singapore</span>
+      <span><a href="https://keiko.coach/privacy">Privacy policy</a> · <a href="https://keiko.coach/terms">Terms</a></span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var el = document.getElementById("sgt");
+      var fmt = new Intl.DateTimeFormat("en-GB", { timeZone: "Asia/Singapore", hour: "2-digit", minute: "2-digit" });
+      function tick() { el.textContent = "Singapore " + fmt.format(new Date()); }
+      tick(); setInterval(tick, 15000);
+    })();
+  </script>
+</body>
+</html>
