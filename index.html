@@ -7,7 +7,6 @@
   <meta name="description" content="W3P PTE. LTD. is a Singapore software company that builds and runs apps for iPhone, Mac and the web, including Keiko and MyYear.">
   <link rel="canonical" href="https://w3p.studio/">
   <meta name="theme-color" content="#2b3be0">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
   <meta property="og:type" content="website">
@@ -175,8 +174,7 @@
     footer a { color: inherit; }
     footer .wm { color: var(--paper); }
     .foot-top { display: grid; grid-template-columns: auto 1fr; gap: 40px clamp(40px, 8vw, 120px); padding: clamp(56px, 7vw, 88px) 0 clamp(40px, 5vw, 64px); }
-    .wm-logo { display: block; width: clamp(150px, 16vw, 220px); height: auto; }
-    .bar .wm img { display: block; height: 24px; width: auto; }
+    .wm.big { font-size: clamp(44px, 6vw, 72px); line-height: .8; letter-spacing: -0.03em; }
     .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 32px; margin: 0; }
     .strip dt { color: oklch(0.65 0.02 268); font-size: 14px; margin-bottom: 8px; }
     .strip dd { margin: 0; color: var(--paper); font-weight: 500; line-height: 1.55; }
@@ -238,7 +236,7 @@
     </div>
     <div class="wrap">
       <div class="bar">
-        <a class="wm" href="#"><img src="/brand/w3p-wordmark-white.svg" alt="W3P" height="24"></a>
+        <a class="wm" href="#">W3P</a>
         <nav>
           <a href="#about">About</a>
           <a href="#products">Products</a>
@@ -317,7 +315,7 @@
   <footer id="contact">
     <div class="wrap">
       <div class="foot-top">
-        <img class="wm-logo" src="/brand/w3p-wordmark-white.svg" alt="W3P" width="220">
+        <span class="wm big">W3P</span>
         <dl class="strip">
           <div><dt>Support for all our apps</dt><dd><a class="mail" href="mailto:support@w3p.studio">support@w3p.studio</a></dd></div>
           <div><dt>Company</dt><dd>W3P PTE. LTD.<br>Singapore</dd></div>
