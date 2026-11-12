@@ -5,10 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>W3P PTE. LTD. · Software company · Singapore</title>
   <meta name="description" content="W3P PTE. LTD. is a Singapore software company that builds and runs apps for iPhone, Mac and the web, including Keiko and MyYear.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://w3p.studio/">
+  <meta name="theme-color" content="#2b3be0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="W3P">
+  <meta property="og:title" content="W3P PTE. LTD. · Software company · Singapore">
+  <meta property="og:description" content="We build and run apps for iPhone, Mac and the web, including Keiko and MyYear.">
+  <meta property="og:url" content="https://w3p.studio/">
+  <meta property="og:image" content="https://w3p.studio/assets/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Organization","name":"W3P PTE. LTD.","alternateName":"W3P","url":"https://w3p.studio/","logo":"https://w3p.studio/assets/icon-512.png","foundingDate":"2021-12-16","email":"support@w3p.studio","telephone":"+65 8921 2160","address":{"@type":"PostalAddress","streetAddress":"7 Temasek Boulevard, #12-07 Suntec Tower One","postalCode":"038987","addressLocality":"Singapore","addressCountry":"SG"},"sameAs":["https://keiko.coach","https://myyear.io"]}
+  </script>
   <style>
+    @font-face { font-family: "Archivo"; src: url("/assets/fonts/archivo-900-wide.woff2") format("woff2"); font-weight: 900; font-stretch: 125%; font-display: swap; }
+    @font-face { font-family: "Schibsted Grotesk"; src: url("/assets/fonts/schibsted-grotesk.woff2") format("woff2"); font-weight: 400 900; font-display: swap; }
     :root {
       --blue: oklch(0.47 0.25 268);
       --blue-hi: oklch(0.56 0.22 268);
@@ -145,6 +158,17 @@
     .stage.violet .phone { transform: rotate(6deg); background: #1b1a33; box-shadow: 0 0 0 1.5px #3a3870 inset, 0 40px 70px -20px rgb(20 18 60 / .6), 0 12px 24px -10px rgb(20 18 60 / .4); }
     .stage.violet .phone::after { background: #1b1a33; }
 
+    /* ---------- About ---------- */
+    .about { padding-bottom: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+    .about-lede { margin: 0; font: 500 clamp(24px, 2.6vw, 34px)/1.3 var(--body); letter-spacing: -0.02em; max-width: 30ch; }
+    .about-facts { margin: 0; }
+    .about-facts div { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--rule); }
+    .about-facts div:last-child { border-bottom: 1px solid var(--rule); }
+    .about-facts dt { color: var(--quiet); font-size: 15px; }
+    .about-facts dd { margin: 0; font-weight: 500; text-align: right; }
+    @media (max-width: 920px) { .about-grid { grid-template-columns: 1fr; } }
+
     /* ---------- Contact ---------- */
     .contact { padding-top: 0; }
     .strip { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px 32px; margin: 0; padding-top: 28px; border-top: 1px solid var(--rule); }
@@ -187,10 +211,11 @@
       .p-half { animation: drift 12s ease-in-out infinite alternate; }
       .phone { animation: bob 6s ease-in-out infinite alternate; }
       .feature.my .phone { animation-delay: -3s; }
-      .sr { opacity: 0; transform: translateY(40px); transition: opacity 1s var(--ease), transform 1.2s var(--ease); }
-      .sr.in { opacity: 1; transform: none; }
-      .feature.sr .phone { transition: rotate 1.4s var(--ease) .2s; rotate: 8deg; }
-      .feature.sr.in .phone { rotate: 0deg; }
+      /* content is always visible; motion only adds a lift when JS is running */
+      .js .sr:not(.in) { transform: translateY(32px); }
+      .js .sr { transition: transform 1.2s var(--ease); }
+      .js .feature.sr .phone { transition: rotate 1.4s var(--ease) .2s; }
+      .js .feature.sr:not(.in) .phone { rotate: 8deg; }
       @keyframes lineUp { from { transform: translateY(105%); } }
       @keyframes letterUp { from { transform: translateY(0.55em); opacity: 0; } }
       @keyframes fade { from { opacity: 0; } }
@@ -211,6 +236,7 @@
       <div class="bar">
         <a class="wm" href="#">W3P</a>
         <nav>
+          <a href="#about">About</a>
           <a href="#products">Products</a>
           <a href="#contact">Contact</a>
           <span class="clock"><i></i><span id="sgt">Singapore</span></span>
@@ -224,6 +250,17 @@
   </header>
 
   <main>
+    <section class="about" id="about">
+      <div class="wrap about-grid">
+        <p class="about-lede sr">W3P is a software company based in Singapore. We design, build and run our own apps, and support the people who use them.</p>
+        <dl class="about-facts sr">
+          <div><dt>Founded</dt><dd>2021, Singapore</dd></div>
+          <div><dt>Apps in production</dt><dd>Keiko, MyYear</dd></div>
+          <div><dt>Platforms</dt><dd>iPhone, Mac, web</dd></div>
+        </dl>
+      </div>
+    </section>
+
     <section id="products">
       <span class="p-ring" aria-hidden="true"></span><span class="p-ring r2" aria-hidden="true"></span><span class="p-half" aria-hidden="true"></span>
       <div class="wrap">
@@ -287,7 +324,7 @@
     <div class="wrap">
       <span class="wm">W3P</span>
       <span>© 2026 W3P PTE. LTD. · Singapore</span>
-      <span>Keiko <a href="https://keiko.coach/privacy">privacy</a> · <a href="https://keiko.coach/terms">terms</a> &nbsp; MyYear <a href="https://myyear.io/privacy.html">privacy</a> · <a href="https://myyear.io/terms.html">terms</a></span>
+      <span><a href="/privacy.html">Website privacy</a> &nbsp; Keiko <a href="https://keiko.coach/privacy">privacy</a> · <a href="https://keiko.coach/terms">terms</a> &nbsp; MyYear <a href="https://myyear.io/privacy.html">privacy</a> · <a href="https://myyear.io/terms.html">terms</a></span>
     </div>
   </footer>
 
@@ -299,6 +336,7 @@
       tick(); setInterval(tick, 15000);
 
       var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!calm && "IntersectionObserver" in window) document.documentElement.classList.add("js");
       var items = document.querySelectorAll(".sr");
       if (calm || !("IntersectionObserver" in window)) { items.forEach(function (n) { n.classList.add("in"); }); return; }
       var io = new IntersectionObserver(function (es) {
